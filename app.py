@@ -10,7 +10,6 @@ MIN_MEDICOS_POR_TURNO = 3
 MIN_ENFERMEIROS_POR_TURNO = 5
 LIMITE_HORAS_SEMANAIS = 40
 CUSTO_HORA_EXTRA = 1.5
-DESCANSO_MINIMO_ENTRE_TURNOS = 12  # Horas mínimas entre turnos consecutivos
 
 # Função para calcular o custo de uma solução
 def calcular_custo(escala, preferencias, custos_horas_extra):
@@ -79,6 +78,21 @@ def simulated_annealing(preferencias, custos_horas_extra, temp_inicial=1000, tax
 
     return melhor_escala, melhor_custo
 
+def formatar_melhor_escala(melhor_escala):
+    for profissional, turnos in melhor_escala.items():
+        print(f"\n{profissional.capitalize()}:")
+        dias = {}
+        for turno, valor in turnos.items():
+            dia, periodo = turno.split("_")
+            if dia not in dias:
+                dias[dia] = {}
+            dias[dia][periodo] = "X" if valor == 1 else " "
+        
+        print("Dia    Manhã  Tarde  Noite")
+        print("-" * 25)
+        for dia, periodos in sorted(dias.items()):
+            print(f"{dia:<6} {periodos.get('manhã', ' '):<6} {periodos.get('tarde', ' '):<6} {periodos.get('noite', ' '):<6}")
+
 # Definição das preferências e custos
 preferencias = {f"medico_{i}": [f"0_manhã", f"1_tarde"] for i in range(NUM_MEDICOS)}
 preferencias.update({f"enfermeiro_{i}": [f"2_noite", f"3_manhã"] for i in range(NUM_ENFERMEIROS)})
@@ -89,5 +103,5 @@ custos_horas_extra.update({f"enfermeiro_{i}": CUSTO_HORA_EXTRA for i in range(NU
 melhor_escala, melhor_custo = simulated_annealing(preferencias, custos_horas_extra)
 
 print("Melhor escala encontrada:")
-print(melhor_escala)
+formatar_melhor_escala(melhor_escala)
 print(f"Custo total: {melhor_custo}")
