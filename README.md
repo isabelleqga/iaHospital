@@ -41,14 +41,9 @@ pip install numpy
 
 ## Como Executar
 
-1. **Clone o repositório**:
+1. **Baixe o arquivo**:
 
-   Se você não tiver o código localmente, clone o repositório para o seu computador. (Caso esteja usando um repositório git)
-
-   ```bash
-   git clone <URL_DO_REPOSITORIO>
-   cd <diretorio_do_repositorio>
-   ```
+   Se você não tiver o código localmente, baixe o arquivo anexado chamado "app.py" e navegue até o diretório que ele está.
 
 2. **Instale os requisitos**:
 
@@ -63,10 +58,10 @@ pip install numpy
    Execute o script Python contendo o algoritmo com o seguinte comando:
 
    ```bash
-   python agendamento_sa.py
+   python app.py
    ```
 
-   Onde `agendamento_sa.py` é o nome do seu arquivo Python. O script irá rodar o algoritmo de *Simulated Annealing* e imprimir a melhor escala encontrada, juntamente com o custo total da solução.
+   Onde `app.py` é o nome do seu arquivo Python. O script irá rodar o algoritmo de *Simulated Annealing* e imprimir a melhor escala encontrada, juntamente com o custo total da solução.
 
 ## Personalização
 
