@@ -1,4 +1,4 @@
-# README - Agendamento de Profissionais de Saúde com Simulated Annealing
+# Agendamento de Profissionais de Saúde com Simulated Annealing
 
 ## Descrição
 
